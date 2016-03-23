@@ -26,7 +26,7 @@ exports.app = angular.module('app', [
     'ngAnimate',
     'app.home'
 ]).controller('MainController', MainController_1.MainController);
-},{"./MainController":1,"./modules/home/index":4,"angular":9,"angular-animate":6,"angular-ui-router":7}],3:[function(require,module,exports){
+},{"./MainController":1,"./modules/home/index":4,"angular":10,"angular-animate":7,"angular-ui-router":8}],3:[function(require,module,exports){
 "use strict";
 var HomeController = (function () {
     function HomeController() {
@@ -46,9 +46,26 @@ exports.HomeController = HomeController;
 "use strict";
 var angular = require('angular');
 var HomeController_1 = require('./HomeController');
+var simpleDirective_1 = require('./simpleDirective');
 exports.home = angular.module('app.home', [])
-    .controller('HomeController', HomeController_1.HomeController);
-},{"./HomeController":3,"angular":9}],5:[function(require,module,exports){
+    .controller('HomeController', HomeController_1.HomeController)
+    .directive('simpleDirective', simpleDirective_1.simpleDirective);
+},{"./HomeController":3,"./simpleDirective":5,"angular":10}],5:[function(require,module,exports){
+"use strict";
+exports.simpleDirective = function () {
+    return {
+        restrict: 'AE',
+        template: '<button>directive btn</button>',
+        link: function (scope, element, attrs) {
+            element[0].style.marginTop = '10px';
+            element.on('click', function () {
+                console.log(" simpleDirective > was clicked = ");
+                document.body.style.backgroundColor = 'red';
+            });
+        }
+    };
+};
+},{}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4160,11 +4177,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":5}],7:[function(require,module,exports){
+},{"./angular-animate":6}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -8704,7 +8721,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -39274,13 +39291,13 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":8}],10:[function(require,module,exports){
+},{"./angular":9}],11:[function(require,module,exports){
 
-},{}]},{},[2,10])
+},{}]},{},[2,11])
 
 
 //# sourceMappingURL=app.js.map

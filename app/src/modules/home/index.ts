@@ -7,9 +7,13 @@ import * as angular from 'angular';
 
 
 
-import {HomeController} from './HomeController'
+import {HomeController}  from './HomeController'
+import {simpleDirective} from './simpleDirective'
+
 
 
 export let home = angular.module('app.home',[])
-    .controller('HomeController', HomeController);
+    .controller('HomeController', HomeController)
+    .directive('simpleDirective', simpleDirective);
+
 
