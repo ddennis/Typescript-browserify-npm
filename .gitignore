@@ -1,0 +1,71 @@
+#################
+## Editors  - Sublime Text - phpstorm
+#################
+
+*.sublime-project
+*.sublime-workspace
+*.idea
+.idea/
+
+#################
+## sass cache
+#################
+.sass-cache
+
+
+#################
+## Windows detritus
+#################
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+#################
+## Mac
+#################
+.DS_Store
+
+#################
+## Atom
+#################
+.tern-project
+
+#################
+## PM2
+#################
+ecosystem.json
+
+#################
+## Directories
+#################
+
+node_modules/
+
+
+
+#################
+## Files
+#################
+
+./newrelic_agent.log
+
+public/onairdatastreng.xml
+
+public/screen/video/vid.mov
+newrelic_agent.log
+
+
+# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
