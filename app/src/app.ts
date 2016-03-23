@@ -4,14 +4,20 @@
 
 
 import * as angular from 'angular';
+
+import 'angular-ui-router';
+import 'angular-animate';
+
 import { MainController} from './MainController';
 
+import './modules/home/index'
 
-export let app = angular.module('app',  [
 
-   /* require('angular-ui-router'),
-    require('angular-ui-bootstrap'),
-    require('angular-translate')*/
-
-]).controller('MainController', MainController);
+export let app = angular.module('app',
+    [
+        'ui.router',
+        'ngAnimate',
+        'app.home'
+    ]
+).controller('MainController', MainController);
 
