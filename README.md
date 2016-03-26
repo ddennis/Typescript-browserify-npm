@@ -3,9 +3,9 @@ Boilerplate project - using Typescript external modules, compiling to commonjs m
 
 
 ## install
-npm install 
+    npm install
 
-## running ##
-gulp js 
+## To Start dev server ##
+    gulp dev
 
-open index.html from dist folder
+go to http://localhost:3000/ in you browser

@@ -2,7 +2,7 @@
 "use strict";
 var MainController = (function () {
     function MainController() {
-        this.name = "name from mainController";
+        this.name = "this is name from mainController";
         console.log(" MainController.ts > ssdf = ");
     }
     MainController.prototype.click = function () {

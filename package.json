@@ -12,6 +12,7 @@
     "angular": "^1.5.1",
     "angular-animate": "^1.5.2",
     "angular-ui-router": "^0.2.18",
+    "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

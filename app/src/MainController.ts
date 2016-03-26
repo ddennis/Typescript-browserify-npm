@@ -1,16 +1,15 @@
 export class MainController {
 
-    public name:string = "name from mainController";
+    public name:string = "this is name from mainController";
 
 
     constructor() {
         console.log(" MainController.ts > ssdf = ");
     }
 
-
     click() {
-
     }
+    
 
 
     getName() {
