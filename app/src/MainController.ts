@@ -1,6 +1,6 @@
 export class MainController {
 
-    public name:string = "dennis";
+    public name:string = "name from mainController";
 
 
     constructor() {

@@ -56,7 +56,6 @@ b.on('log', gutil.log); // output build logs to terminal
 
 function bundle() {
 
-
 	  return b.bundle()
 
 			// log errors if they happen

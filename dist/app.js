@@ -2,7 +2,7 @@
 "use strict";
 var MainController = (function () {
     function MainController() {
-        this.name = "dennis";
+        this.name = "name from mainController";
         console.log(" MainController.ts > ssdf = ");
     }
     MainController.prototype.click = function () {
@@ -26,7 +26,7 @@ exports.app = angular.module('app', [
     'ngAnimate',
     'app.home'
 ]).controller('MainController', MainController_1.MainController);
-},{"./MainController":1,"./modules/home/index":4,"angular":10,"angular-animate":7,"angular-ui-router":8}],3:[function(require,module,exports){
+},{"./MainController":1,"./modules/home/index":5,"angular":11,"angular-animate":8,"angular-ui-router":9}],3:[function(require,module,exports){
 "use strict";
 var HomeController = (function () {
     function HomeController() {
@@ -44,18 +44,44 @@ var HomeController = (function () {
 exports.HomeController = HomeController;
 },{}],4:[function(require,module,exports){
 "use strict";
+var MyDirective = (function () {
+    function MyDirective() {
+        this.template = '<div> tes tes {{name}}</div>';
+        MyDirective.prototype.link = function (scope, element, attrs) {
+            scope.name = "Dennis  ";
+            var mainCtrl = scope.mainCtrl;
+            scope.name = mainCtrl.getName();
+            console.log(" MyDirective.ts >  = ", scope);
+            element.on('tap click', function () {
+                console.log(" MyDirective.ts > YES YES  = ");
+            });
+        };
+    }
+    MyDirective.Factory = function () {
+        var directive = function () {
+            return new MyDirective();
+        };
+        return directive;
+    };
+    return MyDirective;
+}());
+exports.MyDirective = MyDirective;
+},{}],5:[function(require,module,exports){
+"use strict";
 var angular = require('angular');
 var HomeController_1 = require('./HomeController');
 var simpleDirective_1 = require('./simpleDirective');
+var MyDirective_1 = require('./MyDirective');
 exports.home = angular.module('app.home', [])
     .controller('HomeController', HomeController_1.HomeController)
-    .directive('simpleDirective', simpleDirective_1.simpleDirective);
-},{"./HomeController":3,"./simpleDirective":5,"angular":10}],5:[function(require,module,exports){
+    .directive('simpleDirective', simpleDirective_1.simpleDirective)
+    .directive('myDirective', MyDirective_1.MyDirective.Factory());
+},{"./HomeController":3,"./MyDirective":4,"./simpleDirective":6,"angular":11}],6:[function(require,module,exports){
 "use strict";
 exports.simpleDirective = function () {
     return {
         restrict: 'AE',
-        template: '<button>directive btn</button>',
+        template: '<button>button from directive {{someValue}}</button>',
         link: function (scope, element, attrs) {
             element[0].style.marginTop = '10px';
             element.on('click', function () {
@@ -65,7 +91,7 @@ exports.simpleDirective = function () {
         }
     };
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4177,11 +4203,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":6}],8:[function(require,module,exports){
+},{"./angular-animate":7}],9:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -8721,7 +8747,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -39291,13 +39317,13 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":9}],11:[function(require,module,exports){
+},{"./angular":10}],12:[function(require,module,exports){
 
-},{}]},{},[2,11])
+},{}]},{},[2,12])
 
 
 //# sourceMappingURL=app.js.map

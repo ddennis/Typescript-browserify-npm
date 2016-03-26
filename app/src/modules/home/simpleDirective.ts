@@ -7,9 +7,12 @@ export var simpleDirective = function ():ng.IDirective {
 
     return {
         restrict: 'AE',
-        template:'<button>directive btn</button>',
+
+        template:'<button>button from directive {{someValue}}</button>',
+
 
         link: function (scope, element, attrs) {
+
 
             element[0].style.marginTop = '10px'
 
