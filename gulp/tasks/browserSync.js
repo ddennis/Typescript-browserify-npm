@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create();
 
 
 //******************************************************************************
-gulp.task("watch", ["js"], function () {
+gulp.task("dev", ["js"], function () {
 
 	  browserSync.init({
 			server: "./dist/"
