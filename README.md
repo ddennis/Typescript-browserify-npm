@@ -12,7 +12,7 @@ If no typings file is found for a npm module, you can add your own like this.
 
 Gulp is used to handling build, minifying and compiling templates.
 
-This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no Globals. just like a node project.
+This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
 Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code dividing classes into modules.
 
 For me the biggest deal is the static analysis and improved code completion.
