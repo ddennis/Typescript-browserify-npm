@@ -24,6 +24,7 @@
     "gulp-util": "^3.0.7",
     "lodash": "^4.6.1",
     "merge2": "^1.0.1",
+    "pixi.js": "git+https://github.com/pixijs/pixi.js.git",
     "tsd": "^0.6.5",
     "tsify": "^0.14.1",
     "vinyl-buffer": "^1.0.0",

@@ -11,15 +11,17 @@ import { CONSTANTS} from './constants';
 import {routes} from './routes'
 import { config} from './config';
 
-
-import './modules/home/index'
+// Import modules
+import './modules/home'
+import './modules/about'
 
 
 export let app = angular.module('app',
     [
         'ui.router',
         'ngAnimate',
-        'app.home'
+        'app.home',
+        'app.about'
     ]
 ).controller('MainController', MainController)
     .constant('CONSTANTS', CONSTANTS)

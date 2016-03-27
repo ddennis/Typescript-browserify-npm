@@ -9,8 +9,7 @@ import {simpleDirective} from './simpleDirective';
 import {MyDirective} from './MyDirective'
 
 
-
-export let home = angular.module('app.home',[])
+export default angular.module('app.home',[])
     .controller('HomeController', HomeController)
     .directive('simpleDirective', simpleDirective)
     .directive('myDirective', MyDirective.Factory());

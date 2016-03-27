@@ -17,13 +17,11 @@ export function config($stateProvider:any, $urlRouterProvider:any, routes:any, C
         if (item.params) {
             p = item.params
         }
-
-
-        console.log (" config.ts > item = " , item.templateUrl);
         
         $stateProvider.state(item.state, {
             url: item.url,
             templateUrl: item.templateUrl,
+            controller: item.controller,
             params: p
         })
     });

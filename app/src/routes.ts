@@ -25,13 +25,13 @@ export var routes = {
             url: "/home",
             state: CONSTANTS.PAGES.HOME,
             templateUrl: "./modules/home/home.html",
-            controller: 'HomeController'
+            controller: 'HomeController as homeCtrl'
         },
         {
             url: "/about",
             state: CONSTANTS.PAGES.ABOUT,
             templateUrl: "./modules/about/about.html",
-            controller: 'AboutController'
+            controller: 'AboutController as aboutCtrl'
         }
 
     ]
