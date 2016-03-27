@@ -31,7 +31,7 @@ var b = watchify(  browserify(opts)  );
 				  "isolatedModules": false,
 				  "experimentalDecorators": true,
 				  "emitDecoratorMetadata": true,
-				  "declaration": false,
+				  "declaration": true,
 				  "noImplicitAny": true,
 				  "removeComments": true,
 				  "noLib": false,

@@ -6,6 +6,7 @@
 export class HomeController {
 
     public name:string = "Home ctrl";
+    
 
     //static $inject = ['SomeFactory'];
 

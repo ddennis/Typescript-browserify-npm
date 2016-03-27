@@ -1,9 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 var MainController = (function () {
-    function MainController() {
+    function MainController($state) {
+        this.$state = $state;
         this.name = "this is name from mainController";
-        console.log(" MainController.ts > ssdf = ");
+        this.$state = $state;
+        console.log(" MainController.ts > ssasdasdadf = ");
     }
     MainController.prototype.click = function () {
     };
@@ -11,6 +13,11 @@ var MainController = (function () {
         return this.name;
     };
     ;
+    MainController.prototype.gotoPage = function (value) {
+        console.log(" MainController.ts > goHOMe = ", value);
+        this.$state.go(value);
+    };
+    MainController.$inject = ['$state'];
     return MainController;
 }());
 exports.MainController = MainController;
@@ -20,13 +27,54 @@ var angular = require('angular');
 require('angular-ui-router');
 require('angular-animate');
 var MainController_1 = require('./MainController');
+var constants_1 = require('./constants');
+var routes_1 = require('./routes');
+var config_1 = require('./config');
 require('./modules/home/index');
 exports.app = angular.module('app', [
     'ui.router',
     'ngAnimate',
     'app.home'
-]).controller('MainController', MainController_1.MainController);
-},{"./MainController":1,"./modules/home/index":5,"angular":11,"angular-animate":8,"angular-ui-router":9}],3:[function(require,module,exports){
+]).controller('MainController', MainController_1.MainController)
+    .constant('CONSTANTS', constants_1.CONSTANTS)
+    .constant('routes', routes_1.routes)
+    .config(config_1.config);
+},{"./MainController":1,"./config":3,"./constants":4,"./modules/home/index":7,"./routes":9,"angular":14,"angular-animate":11,"angular-ui-router":12}],3:[function(require,module,exports){
+"use strict";
+var angular = require('angular');
+function config($stateProvider, $urlRouterProvider, routes, CONSTANTS, $compileProvider) {
+    var arr = routes.pages;
+    angular.forEach(arr, function (item, index) {
+        var p = {};
+        if (item.params) {
+            p = item.params;
+        }
+        console.log(" config.ts > item = ", item.templateUrl);
+        $stateProvider.state(item.state, {
+            url: item.url,
+            templateUrl: item.templateUrl,
+            params: p
+        });
+    });
+    $compileProvider.debugInfoEnabled(CONSTANTS.DEBUG);
+    $urlRouterProvider.otherwise('/home');
+}
+exports.config = config;
+config.$inject = ['$stateProvider', '$urlRouterProvider', 'routes', 'CONSTANTS', '$compileProvider'];
+},{"angular":14}],4:[function(require,module,exports){
+"use strict";
+exports.CONSTANTS = {
+    appTitle: 'Some Title',
+    DEBUG: true,
+    PAGES: {
+        HOME: 'home',
+        ABOUT: 'about'
+    },
+    EVENTS: {
+        MY_EVENT: "myEvent"
+    }
+};
+},{}],5:[function(require,module,exports){
 "use strict";
 var HomeController = (function () {
     function HomeController() {
@@ -42,7 +90,7 @@ var HomeController = (function () {
     return HomeController;
 }());
 exports.HomeController = HomeController;
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 var MyDirective = (function () {
     function MyDirective() {
@@ -66,7 +114,7 @@ var MyDirective = (function () {
     return MyDirective;
 }());
 exports.MyDirective = MyDirective;
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 var angular = require('angular');
 var HomeController_1 = require('./HomeController');
@@ -76,7 +124,7 @@ exports.home = angular.module('app.home', [])
     .controller('HomeController', HomeController_1.HomeController)
     .directive('simpleDirective', simpleDirective_1.simpleDirective)
     .directive('myDirective', MyDirective_1.MyDirective.Factory());
-},{"./HomeController":3,"./MyDirective":4,"./simpleDirective":6,"angular":11}],6:[function(require,module,exports){
+},{"./HomeController":5,"./MyDirective":6,"./simpleDirective":8,"angular":14}],8:[function(require,module,exports){
 "use strict";
 exports.simpleDirective = function () {
     return {
@@ -91,7 +139,32 @@ exports.simpleDirective = function () {
         }
     };
 };
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+"use strict";
+var constants_1 = require('./constants');
+exports.routes = {
+    "menu": [
+        {
+            title: "Some Title",
+            state: constants_1.CONSTANTS.PAGES.HOME
+        }
+    ],
+    pages: [
+        {
+            url: "/home",
+            state: constants_1.CONSTANTS.PAGES.HOME,
+            templateUrl: "./modules/home/home.html",
+            controller: 'HomeController'
+        },
+        {
+            url: "/about",
+            state: constants_1.CONSTANTS.PAGES.ABOUT,
+            templateUrl: "./modules/about/about.html",
+            controller: 'AboutController'
+        }
+    ]
+};
+},{"./constants":4}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.2
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4203,11 +4276,11 @@ angular.module('ngAnimate', [])
 
 })(window, window.angular);
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":7}],9:[function(require,module,exports){
+},{"./angular-animate":10}],12:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.18
@@ -8747,7 +8820,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -39317,13 +39390,13 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":10}],12:[function(require,module,exports){
+},{"./angular":13}],15:[function(require,module,exports){
 
-},{}]},{},[2,12])
+},{}]},{},[2,15])
 
 
 //# sourceMappingURL=app.js.map
