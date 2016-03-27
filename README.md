@@ -1,5 +1,5 @@
-# Typescript browserify npm Gulp
-
+# Typescript external modules using browserify, npm, tsd and Gulp
+--------------------------------------------------------------------
 ## What is this
 A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **Tsd** is used for handling typings. tsd install angular --save will make the typings file avlible in the project.
 If no typings file is found for a npm module, you can add your own like this. 
@@ -15,6 +15,7 @@ Gulp is used to handling build, minifying and compiling templates.
 This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
 Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code dividing classes into modules.
 
+I am using angular, but the basic setup can rely on any npm module.
 For me the biggest deal is the static analysis and improved code completion.
 
 
