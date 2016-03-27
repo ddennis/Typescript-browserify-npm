@@ -1,11 +1,17 @@
 # Typescript browserify npm Gulp
 
 ## What is this
-A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser.
+A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **Tsd** is used for handling typings. tsd install angular --save will make the typings file avlible in the project.
+If no typings file is found you can add your own like this. 
+
+    declare module 'pixi.js' {
+        export = PIXI;
+    }
+
 Gulp is used to handling build, minifying and compiling templates.
 
 This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no Globals. just like a node project.
-Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code that uses the module.
+Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code dividing classes into modules.
 
 For me the biggest deal is the static analysis and improved code completion.
 
