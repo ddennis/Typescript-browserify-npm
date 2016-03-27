@@ -74,6 +74,18 @@ Borsersync should now open your browser on http://localhost:3000/
             return directive;
         }
     }
+    
+When registring the directive in your angular module
+
+    // The solution has been taken from here:
+    // http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
+    
+    //import the class
+    import {MyDirective} from './MyDirective'
+    
+    export default angular.module('app.home',[])
+    // notice it's the static factory function which is called to register the directive
+    .directive('myDirective', MyDirective.Factory());
 
 
 **directives using your own interfaces**
