@@ -19,7 +19,9 @@ I am using angular, but the basic setup can rely on any npm module.
 For me the biggest deal is the static analysis and improved code completion.
 
 
-## install - this project requires nodejs to be installed
+## Install
+ This project requires nodejs to be installed
+
     npm install
 
 ## start the dev server ##
