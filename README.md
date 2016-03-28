@@ -42,10 +42,9 @@ Borsersync should now open your browser on http://localhost:3000/
         }
     }
 
-**Using es6 classes with directives requires a little work around.** there is a couple of ways to make this Work. The solution described here i liked the most: 
+**Using es6 classes with directives requires a little work around.** there is a couple of ways to make this work. The solution described here seems to work well:
+http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
 
-    // The solution has been taken from here:
-    // http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
 
     export class MyDirective {
         public link:(scope:any , element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => void;
@@ -90,6 +89,11 @@ When registring the directive in your angular module
     export default angular.module('app.home',[])
     // notice it's the static factory function which is called to register the directive
     .directive('myDirective', MyDirective.Factory());
+
+
+If you dont want to use ES6 classes, everything works as normal.
+
+TODO - add standard directive function
 
 
 **directives using your own interfaces**
