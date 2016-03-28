@@ -19,10 +19,10 @@ I am using angular, but the basic setup can rely on any npm module.
 For me the biggest deal is the static analysis and improved code completion.
 
 
-## install
+## install - this project requires nodejs to be installed
     npm install
 
-## To Start dev server ##
+## start the dev server ##
     gulp dev
 
 Borsersync should now open your browser on http://localhost:3000/
@@ -40,7 +40,10 @@ Borsersync should now open your browser on http://localhost:3000/
         }
     }
 
-**Using es6 classes with directives requires a littel work around.**
+**Using es6 classes with directives requires a little work around.** there is a couple of ways to make this Work. The solution described here i liked the most: 
+
+    // The solution has been taken from here:
+    // http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
 
     export class MyDirective {
         public link:(scope:any , element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => void;
@@ -78,8 +81,6 @@ Borsersync should now open your browser on http://localhost:3000/
     
 When registring the directive in your angular module
 
-    // The solution has been taken from here:
-    // http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
     
     //import the class
     import {MyDirective} from './MyDirective'
