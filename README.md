@@ -24,6 +24,18 @@ if you just import a module it will get upset and complain.
 What we need is to tell it what **somePerson** Therefore we provide a .d.ts file which explains what the module brings to the party
 Something like this:
 
+
+    declare module 'somePerson' {
+        var arethaFranklin: any;
+        export default arethaFranklin;
+    }
+
+
+
+
+Mr. Typescript compiler will now be very happy about letting **somePerson** into the party.
+Even better we can provide an description on what somePerson can do
+
     export interface ArethaFranklin{
         canSing:boolean = true
     }
@@ -36,8 +48,6 @@ Something like this:
 
 
 
-Mr. Typescript compiler will now be very happy about letting **somePerson** into the party.
-Even better we can provide an description on what somePerson can do
 
 ## Install
 To be able to use this project nodejs must be installed
