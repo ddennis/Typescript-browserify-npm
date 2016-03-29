@@ -1,7 +1,7 @@
-# Typescript external modules using browserify, npm, tsd and Gulp
+# Typescript external modules using browserify, npm, typings and Gulp
 --------------------------------------------------------------------
 ## What is this
-A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **Tsd** is used for handling typings. tsd install angular --save will make the typings file avlible in the project.
+A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files. tsd install angular --save will make the typings file available in the project.
 If no typings file is found for a npm module, you can add your own like this. 
 
     declare module 'someNpmModule' {
@@ -20,9 +20,18 @@ For me the biggest deal is the static analysis and improved code completion.
 
 
 ## Install
- This project requires nodejs to be installed
+To be able to use this project nodejs must be installed
 
     npm install
+
+To use Typescript with npm modules we need to handle we need to handle .d.ts files.
+This will also provide us with better code completion if we use the definitions files provided by the community.
+
+This should install typings globaly and install the typings file for the project
+
+    npm install typings -g && typings install
+
+
 
 ## start the dev server ##
     gulp dev
