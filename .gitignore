@@ -46,6 +46,8 @@ ecosystem.json
 ## Directories
 #################
 
+testFolder/*
+!testFolder/me/index.js
 
 node_modules/*
 !node_modules/somePerson/index.js
