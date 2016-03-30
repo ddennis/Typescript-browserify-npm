@@ -3,7 +3,6 @@
 ## What is this
 A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files. typings install angular --ambient --save will make the typings file available in the project.
 
-    
 
 Gulp is used to handling build, minifying and compiling templates.
 
@@ -13,24 +12,22 @@ Using Typescript externals modules you don't have to pass the typescript referen
 This boilerplate project is based on angular 1, but the basic setup can be used with without any npm module or without.
 For me the biggest deal is the static analysis and improved code completion.
 
-## THE SETUP - WHAT YOU NEED, YOU KNOW I GOT IT - all im asking is for a little definition file ♫ ♬ ♫
-In order to make the Typescript compiler happy and get it to party with you, you need to tell it who you have invited to the party.
-if you just import a module it will get upset and complain.
+## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
+In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
+if you just invite a friend or import a module it will get upset and complain.
 
     import * as somePerson from 'somePerson'
 
     import * as _ from 'underscore'
 
-What we need is to tell it what **somePerson** Therefore we provide a .d.ts file which explains what the module brings to the party
+What we need is to tell Mr Typescript compiler about **somePerson**.
+To do this we provide a .d.ts file which explains what the person or **module** brings to the party
 Something like this:
-
 
     declare module 'somePerson' {
         var arethaFranklin: any;
         export default arethaFranklin;
     }
-
-
 
 
 Mr. Typescript compiler will now be very happy about letting **somePerson** into the party.
@@ -44,9 +41,6 @@ Even better we can provide an description on what somePerson can do
         var arethaFranklin: ArethaFranklin;
         export default arethaFranklin;
     }
-
-
-
 
 
 ## Install

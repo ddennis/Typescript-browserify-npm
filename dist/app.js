@@ -32,6 +32,8 @@ var routes_1 = require('./routes');
 var config_1 = require('./config');
 require('./modules/home');
 require('./modules/about');
+var somePerson = require('somePerson');
+console.log(" app.ts > somePerson  ", somePerson);
 exports.app = angular.module('app', [
     'ui.router',
     'ngAnimate',
@@ -41,7 +43,7 @@ exports.app = angular.module('app', [
     .constant('CONSTANTS', constants_1.CONSTANTS)
     .constant('routes', routes_1.routes)
     .config(config_1.config);
-},{"./MainController":1,"./config":3,"./constants":4,"./modules/about":8,"./modules/home":11,"./routes":13,"angular":18,"angular-animate":15,"angular-ui-router":16}],3:[function(require,module,exports){
+},{"./MainController":1,"./config":3,"./constants":4,"./modules/about":8,"./modules/home":11,"./routes":13,"angular":18,"angular-animate":15,"angular-ui-router":16,"somePerson":154}],3:[function(require,module,exports){
 "use strict";
 var angular = require('angular');
 function config($stateProvider, $urlRouterProvider, routes, CONSTANTS, $compileProvider) {
@@ -68644,8 +68646,26 @@ if (!global.cancelAnimationFrame) {
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
 },{}],154:[function(require,module,exports){
+/**
+ * User: Fathead
+ */
 
-},{}]},{},[2,154])
+
+
+exports.somePerson = function () {
+	var vm = this;
+	this.canSing = true;
+	vm.sing = function () {
+		console.log (" somePerson.js > LA LA LA LA  " )
+	}
+
+};
+
+
+
+},{}],155:[function(require,module,exports){
+
+},{}]},{},[2,155])
 
 
 //# sourceMappingURL=app.js.map

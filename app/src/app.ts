@@ -16,6 +16,18 @@ import './modules/home'
 import './modules/about'
 
 
+
+//import * as somePerson from './utils/somePerson'
+
+
+//import somePerson = require('somePerson')
+import * as somePerson from 'somePerson'
+
+console.log (" app.ts > somePerson  ", somePerson  )
+
+
+
+
 export let app = angular.module('app',
     [
         'ui.router',
