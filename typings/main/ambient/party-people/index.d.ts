@@ -3,10 +3,6 @@
 
 
 declare module 'party-people' {
-    /*export function aretha(): {
-        name: string;
-    }*/
-
 
     export class aretha{
         canSing:boolean;
@@ -18,10 +14,7 @@ declare module 'party-people' {
         sing():void;
     }
 
-    function allSingers():void
-
-    //export var aretha
-
+    function allSingers():void   
 
 }
 

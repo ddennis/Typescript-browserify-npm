@@ -14,33 +14,73 @@ For me the biggest deal is the static analysis and improved code completion.
 
 ## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
-if you just invite a friend or import a module it will get upset and complain.
+if you just all of you friends or import a module it will get upset and complain.
 
-    import * as somePerson from 'somePerson'
+    import * as partyPeople from 'partyPeople'
 
-    import * as _ from 'underscore'
+    import * as _ from 'underscore';
 
-What we need is to tell Mr Typescript compiler about **somePerson**.
-To do this we provide a .d.ts file which explains what the person or **module** brings to the party
+
+What we need to do, is to tell Mr Typescript compiler about **partyPeople**.
+To do this we provide a .d.ts file which explains what the people or **module** brings to the party
+
 Something like this:
 
-    declare module 'somePerson' {
-        var arethaFranklin: any;
-        export default arethaFranklin;
-    }
+    declare module 'party-people' {
+        export class aretha{
+        }
+	}
 
 
-Mr. Typescript compiler will now be very happy about letting **somePerson** into the party.
-Even better we can provide an description on what somePerson can do
 
-    export interface ArethaFranklin{
-        canSing:boolean = true
-    }
+Mr. Typescript compiler will now be very happy about letting **party-people** and everythings it contains into the party.
+But remember if you wanna talk to one of the **party-people** you need to specify it in the definition file:
 
-    declare module 'somePerson' {
-        var arethaFranklin: ArethaFranklin;
-        export default arethaFranklin;
-    }
+To make Mr. Typescript compiler an even better host, we can provide an description on what **partyPeople** contains:
+
+	declare module 'party-people' {
+
+	   export class aretha{
+	       canSing:boolean;
+	       sing():void;
+	   }
+
+	   export class bruce{
+	       canSing:boolean;
+	       sing():void;
+	   }
+
+	   function allSingers():void
+
+	}
+
+
+This project contains a simple example of a npm module called party-people, the module can be found in the node_modules folder.
+
+
+	exports.aretha = function () {
+		  var vm     = this
+		  vm.canSing = true
+		  vm.name    = "Aretha Fraklin"
+		  vm.sing    = function () {
+				console.log(vm.name, " sings: R-E-S-P-E-C-T Find out what it means to me R-E-S-P-E-C-T Take care, TCB");
+		  }
+	}
+
+
+	exports.bruce = function () {
+		  var vm     = this
+		  vm.canSing = false
+		  vm.name    = "Bruce (Die Hard) willis"
+		  vm.sing    = function () {
+				console.log(vm.name + " sings: Under the boardwalk, down by the sea");
+		  }
+	}
+
+
+	exports.allSingers = function () {
+		  return ["Bruce (Die Hard) willis", "Aretha Fraklin"]
+	}
 
 
 ## Install

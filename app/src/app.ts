@@ -2,47 +2,52 @@
  * Created by Fantastisk on 17-03-2016.
  */
 
+
+/**
+ * Import modules from npm
+ */
 import * as angular from 'angular';
 import 'angular-ui-router';
 import 'angular-animate';
+import * as _ from 'underscore';
 
-import { MainController} from './MainController';
-import { CONSTANTS} from './constants';
+
+
+
+/**
+ * import specifik files used in our setup
+ */
+import {MainController} from './MainController';
+import {CONSTANTS} from './constants';
 import {routes} from './routes'
-import { config} from './config';
+import {config} from './config';
 
-// Import modules
+
+/**
+ * Import our angular modules
+ */
 import './modules/home'
 import './modules/about'
 
-
-//import somePerson = require('somePerson')
-//import * as somePerson from 'party-people'
 import {aretha} from 'party-people'
 import {bruce} from 'party-people'
 import * as partyPeople from 'party-people'
 
 
-var arethaFranklin:any = new aretha()
-arethaFranklin.sing();
 
+var arethaFranklin:any = new aretha();
+arethaFranklin.sing();
 
 var bruceWillis = new bruce();
 bruceWillis.sing();
 
 var all = partyPeople.allSingers()
-console.log (" app.ts > all  = " , all );
 
+var a = ['1','2']
 
-/*
-var k:any = new somePerson.aretha();
-k.sing()*/
-
-/*var k:any = new somePerson.aretha()
-k.sing()*/
-
-/*var k = new aretha()
-k.sing()*/
+_.each(a, function (item:any) {
+    console.log (" app.ts > item = " , item);
+})
 
 
 export let app = angular.module('app',
