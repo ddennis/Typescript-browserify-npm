@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create('app');
 
 
 //******************************************************************************
-gulp.task("dev", ['markup', 'js'], function () {
+gulp.task("dev", ['markup', 'browserifyTypescript'], function () {
 
 	  browserSync.init({
 			server: "./dist/"

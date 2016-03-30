@@ -1,35 +1,124 @@
-# Typescript external modules using browserify, npm, tsd and Gulp
+# Typescript external modules using browserify, npm, typings and Gulp
 --------------------------------------------------------------------
 ## What is this
-A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **Tsd** is used for handling typings. tsd install angular --save will make the typings file avlible in the project.
-If no typings file is found for a npm module, you can add your own like this. 
+A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files.
 
-    declare module 'someNpmModule' {
-        var foo: any;
-        export default foo;
-    } 
-    
+This is basically a standard browserify project, which enables you to use **commonjs/npm modules** in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
+Using Typescript externals modules you don't have to pass the typescript reference file around and the needless namespacing in the code dividing classes into modules.
 
-Gulp is used to handling build, minifying and compiling templates.
+This boilerplate project is based on angular 1, but the basic setup can be used with or without any npm module.
 
-This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
-Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code dividing classes into modules.
 
-I am using angular, but the basic setup can rely on any npm module.
-For me the biggest deal is the static analysis and improved code completion.
+## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
+In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
+if you just invite of you friends or import a module it will get upset and complain.
+
+    import * as partyPeople from 'partyPeople'
+
+    import * as _ from 'underscore';
+
+
+What we need to do, is to tell Mr Typescript compiler about **party-people**.
+To do this we provide a .d.ts file which explains what the people or **module** brings to the party
+
+Something like this:
+
+####the npm module
+	exports.aretha = function () {
+		  ....
+	}
+
+
+	exports.bruce = function () {
+		  ...
+	}
+
+
+	exports.allSingers = function () {
+		...
+	}
+
+####The typescript definition file or d.ts
+
+    declare module 'party-people' {
+        export class aretha{
+        }
+	}
+
+
+Mr. Typescript compiler will now be very happy about letting **party-people** and **aretha** into the party.
+But if you want Bruce Willis to sing, so will have to specify **bruce** in the definition file.
+
+To make Mr. Typescript compiler an even better host, we can provide an description of what each person in the **partyPeople** module can do:
+
+	declare module 'party-people' {
+
+	   export class aretha{
+	       canSing:boolean;
+	       sing():void;
+	   }
+
+	   export class bruce{
+	       canSing:boolean;
+	       sing():void;
+	   }
+
+	   function allSingers():void
+
+	}
+
+
+Here is the complete 'party-people' npm module, which is included in the node_modules folder, as an example.
+
+	exports.aretha = function () {
+		  var vm     = this
+		  vm.canSing = true
+		  vm.name    = "Aretha Fraklin"
+		  vm.sing    = function () {
+				console.log(vm.name, " sings: R-E-S-P-E-C-T Find out what it means to me R-E-S-P-E-C-T Take care, TCB");
+		  }
+	}
+
+
+	exports.bruce = function () {
+		  var vm     = this
+		  vm.canSing = false
+		  vm.name    = "Bruce (Die Hard) willis"
+		  vm.sing    = function () {
+				console.log(vm.name + " sings: Under the boardwalk, down by the sea");
+		  }
+	}
+
+
+	exports.allSingers = function () {
+		  return ["Bruce (Die Hard) willis", "Aretha Fraklin"]
+	}
+
+
 
 
 ## Install
- This project requires nodejs to be installed
+To be able to use this project nodejs must be installed
 
     npm install
 
-## start the dev server ##
+
+This should install typings globaly and install the typings file for the project:
+
+    npm install typings -g && typings install
+
+
+To install a definition type:
+
+	typings install angular --ambient --save
+
+
+## To start the dev server ##
     gulp dev
 
-Borsersync should now open your browser on http://localhost:3000/
+Brosersync should now open your browser on http://localhost:3000/
 
-## Specific for angular 
+### Specific for angular
 
 **Dependency injection in services or controllers **
 

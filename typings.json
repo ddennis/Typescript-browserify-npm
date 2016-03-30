@@ -1,0 +1,12 @@
+{
+  "name": "typescript-test-2016",
+  "version": false,
+  "ambientDependencies": {
+    "angular": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#a44529fcb1e1cdc0355e71c42a6048de99b57c34",
+    "angular-animate": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-animate.d.ts#a44529fcb1e1cdc0355e71c42a6048de99b57c34",
+    "angular-ui-router": "github:DefinitelyTyped/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts#a44529fcb1e1cdc0355e71c42a6048de99b57c34",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#a44529fcb1e1cdc0355e71c42a6048de99b57c34",
+    "pixi.js": "registry:dt/pixi.js#3.0.9+20160317120654",
+    "underscore": "registry:dt/underscore#1.7.0+20160316155526"
+  }
+}
