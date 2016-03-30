@@ -1,30 +1,44 @@
 # Typescript external modules using browserify, npm, typings and Gulp
 --------------------------------------------------------------------
 ## What is this
-A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files. typings install angular --ambient --save will make the typings file available in the project.
+A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files.
 
+This is basically a standard browserify project, which enables you to use **commonjs/npm modules** in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
+Using Typescript externals modules you don't have to pass the typescript reference file around and the needless namespacing in the code dividing classes into modules.
 
-Gulp is used to handling build, minifying and compiling templates.
+This boilerplate project is based on angular 1, but the basic setup can be used with or without any npm module.
 
-This is basically a standard browserify project, which enables you to use commonjs/npm modules in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
-Using Typescript externals modules you don't have to pass the typescript reference file around and needless namespacing in the code dividing classes into modules.
-
-This boilerplate project is based on angular 1, but the basic setup can be used with without any npm module or without.
-For me the biggest deal is the static analysis and improved code completion.
 
 ## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
-if you just all of you friends or import a module it will get upset and complain.
+if you just invite of you friends or import a module it will get upset and complain.
 
     import * as partyPeople from 'partyPeople'
 
     import * as _ from 'underscore';
 
 
-What we need to do, is to tell Mr Typescript compiler about **partyPeople**.
+What we need to do, is to tell Mr Typescript compiler about **party-people**.
 To do this we provide a .d.ts file which explains what the people or **module** brings to the party
 
 Something like this:
+
+####the npm module
+	exports.aretha = function () {
+		  ....
+	}
+
+
+	exports.bruce = function () {
+		  ...
+	}
+
+
+	exports.allSingers = function () {
+		...
+	}
+
+####The typescript definition file or d.ts
 
     declare module 'party-people' {
         export class aretha{
@@ -32,11 +46,10 @@ Something like this:
 	}
 
 
+Mr. Typescript compiler will now be very happy about letting **party-people** and **aretha** into the party.
+But if you want Bruce Willis to sing, so will have to specify **bruce** in the definition file.
 
-Mr. Typescript compiler will now be very happy about letting **party-people** and everythings it contains into the party.
-But remember if you wanna talk to one of the **party-people** you need to specify it in the definition file:
-
-To make Mr. Typescript compiler an even better host, we can provide an description on what **partyPeople** contains:
+To make Mr. Typescript compiler an even better host, we can provide an description of what each person in the **partyPeople** module can do:
 
 	declare module 'party-people' {
 
@@ -55,8 +68,7 @@ To make Mr. Typescript compiler an even better host, we can provide an descripti
 	}
 
 
-This project contains a simple example of a npm module called party-people, the module can be found in the node_modules folder.
-
+Here is the complete 'party-people' npm module, which is included in the node_modules folder, as an example.
 
 	exports.aretha = function () {
 		  var vm     = this
@@ -83,25 +95,30 @@ This project contains a simple example of a npm module called party-people, the 
 	}
 
 
+
+
 ## Install
 To be able to use this project nodejs must be installed
 
     npm install
 
 
-
-This should install typings globaly and install the typings file for the project
+This should install typings globaly and install the typings file for the project:
 
     npm install typings -g && typings install
 
 
+To install a definition type:
 
-## start the dev server ##
+	typings install angular --ambient --save
+
+
+## To start the dev server ##
     gulp dev
 
-Borsersync should now open your browser on http://localhost:3000/
+Brosersync should now open your browser on http://localhost:3000/
 
-## Specific for angular 
+### Specific for angular
 
 **Dependency injection in services or controllers **
 
