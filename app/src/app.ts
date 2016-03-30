@@ -16,16 +16,33 @@ import './modules/home'
 import './modules/about'
 
 
-
-//import * as somePerson from './utils/somePerson'
-
-
 //import somePerson = require('somePerson')
-import * as somePerson from 'somePerson'
+//import * as somePerson from 'party-people'
+import {aretha} from 'party-people'
+import {bruce} from 'party-people'
+import * as partyPeople from 'party-people'
 
-console.log (" app.ts > somePerson  ", somePerson  )
+
+var arethaFranklin:any = new aretha()
+arethaFranklin.sing();
 
 
+var bruceWillis = new bruce();
+bruceWillis.sing();
+
+var all = partyPeople.allSingers()
+console.log (" app.ts > all  = " , all );
+
+
+/*
+var k:any = new somePerson.aretha();
+k.sing()*/
+
+/*var k:any = new somePerson.aretha()
+k.sing()*/
+
+/*var k = new aretha()
+k.sing()*/
 
 
 export let app = angular.module('app',
