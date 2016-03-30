@@ -46,7 +46,9 @@ ecosystem.json
 ## Directories
 #################
 
+
 node_modules/
+!node_modules/somePerson/*
 dist/
 
 
