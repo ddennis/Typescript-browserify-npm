@@ -1,5 +1,26 @@
 # Typescript external modules using browserify, npm, typings and Gulp
---------------------------------------------------------------------
+
+## Install
+To be able to use this project nodejs must be installed
+
+    npm install
+
+
+This should install typings globaly and install the typings file for the project:
+
+    npm install typings -g && typings install
+
+
+To install a definition type:
+
+	typings install angular --ambient --save
+
+
+To start development **gulp** and browsersync should open open your browser on http://localhost:3000/ by running:
+    gulp dev
+
+
+
 ## What is this
 A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files.
 
@@ -11,10 +32,10 @@ This boilerplate project is based on angular 1, but the basic setup can be used 
 
 ## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
-if you just invite of you friends or import a module it will get upset and complain.
+if you just invite some of your friends or import a module it will get upset and complain.
 
-    import * as partyPeople from 'partyPeople'
-
+    import * as partyPeople from 'party-people'
+	or
     import * as _ from 'underscore';
 
 
@@ -23,17 +44,13 @@ To do this we provide a .d.ts file which explains what the people or **module** 
 
 Something like this:
 
-####the npm module
+####The npm module we want to use
 	exports.aretha = function () {
 		  ....
 	}
-
-
 	exports.bruce = function () {
 		  ...
 	}
-
-
 	exports.allSingers = function () {
 		...
 	}
@@ -97,26 +114,7 @@ Here is the complete 'party-people' npm module, which is included in the node_mo
 
 
 
-## Install
-To be able to use this project nodejs must be installed
 
-    npm install
-
-
-This should install typings globaly and install the typings file for the project:
-
-    npm install typings -g && typings install
-
-
-To install a definition type:
-
-	typings install angular --ambient --save
-
-
-## To start the dev server ##
-    gulp dev
-
-Brosersync should now open your browser on http://localhost:3000/
 
 ### Specific for angular
 
