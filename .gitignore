@@ -48,7 +48,7 @@ ecosystem.json
 
 
 node_modules/
-!node_modules/somePerson/*
+!/node_modules/somePerson/*
 dist/
 
 
