@@ -47,7 +47,7 @@ ecosystem.json
 #################
 
 
-node_modules/
+node_modules/*
 !node_modules/somePerson/index.js
 dist/
 
