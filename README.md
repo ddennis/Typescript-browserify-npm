@@ -6,6 +6,18 @@ To be able to use this project nodejs must be installed
     npm install
 
 
+To get up and running with this project, i have included the typings files needed.
+In my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
+the typings files is included in the repo.
+
+If you want to install a new npm module you need to install the typings module -g
+
+    // ii you don't have the typings moduled install
+    npm install typings -g
+
+
+
+
 This should install typings globaly and install the typings file for the project:
 
     npm install typings -g && typings install
