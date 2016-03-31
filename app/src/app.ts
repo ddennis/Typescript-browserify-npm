@@ -4,30 +4,16 @@
 
 
 /**
- * Import modules from npm
+ * Import modules from a npm module
  */
-import * as angular from 'angular';
-import 'angular-ui-router';
-import 'angular-animate';
+
 import * as _ from 'underscore';
 
 
 
-
 /**
- * import specifik files used in our setup
+ * Import modules from our test module
  */
-import {MainController} from './MainController';
-import {CONSTANTS} from './constants';
-import {routes} from './routes'
-import {config} from './config';
-
-
-/**
- * Import our angular modules
- */
-import './modules/home'
-import './modules/about'
 
 import {aretha} from 'party-people'
 import {bruce} from 'party-people'
@@ -43,22 +29,9 @@ bruceWillis.sing();
 
 var all = partyPeople.allSingers()
 
-var a = ['1','2']
+var a = ['1', '2'];
 
 _.each(a, function (item:any) {
-    console.log (" app.ts > item = " , item);
-})
-
-
-export let app = angular.module('app',
-    [
-        'ui.router',
-        'ngAnimate',
-        'app.home',
-        'app.about'
-    ]
-).controller('MainController', MainController)
-    .constant('CONSTANTS', CONSTANTS)
-    .constant('routes', routes)
-    .config(config);
+    console.log(" app.ts > item = ", item);
+});
 

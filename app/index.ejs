@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="app" lang="en">
+<html lang="en">
 
 <head>
 			<meta charset="UTF-8">
@@ -8,30 +8,9 @@
 			<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 </head>
 
-<body ng-controller="MainController as mainCtrl">
-
-
-<div class="btn btn-default"  ng-click="mainCtrl.gotoPage('home')"> goto HOME</div>
-<div class="btn btn-default"  ng-click="mainCtrl.gotoPage('about')"> goto about</div>
-
-
-<!--<div ng-controller="HomeController as homeCtrl" ng-click="homeCtrl.click()">
-			<button>{{homeCtrl.name}}</button>
-</div>-->
-
-
+<body>
 
 <%- version %>
-
-
-<div simple-directive></div>
-
-<div my-directive></div>
-
-<div style="background-color: cornsilk">
-			<div ui-view></div>
-</div>
-
 
 <script type="text/javascript" src="app.js"></script>
 
