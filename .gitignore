@@ -46,6 +46,9 @@ ecosystem.json
 ## Directories
 #################
 
+# Ignore this folder
+dist/*
+
 
 # ignore node_modules folder
 node_modules/*
@@ -54,8 +57,6 @@ node_modules/*
 !node_modules/party-people/
 
 
-# Ignore this folder
-dist/*
 
 
 
