@@ -6,14 +6,9 @@ To be able to use this project nodejs must be installed
     npm install
 
 
-To get up and running with this project, i have included the typings files needed.
-In my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
-the typings files is included in the repo.
+This should install typings globaly and install the typings file for the project:
 
-If you want to install a new npm module you need to install the typings module -g
-
-	// ii you don't have the typings moduled install
-    npm install typings -g
+    npm install typings -g && typings install
 
 
 To install a definition type:
@@ -117,3 +112,77 @@ Here is the complete 'party-people' npm module, which is included in the node_mo
 	}
 
 
+
+
+
+
+### Specific for angular
+
+**Dependency injection in services or controllers **
+
+    export class SomeController {
+        static $inject = ['SomeService', SomeConstants ];
+    
+        constructor(SomeService, SomeConstants ) {
+            this.SomeService = SomeService
+            this.SomeConstants = SomeConstants
+        }
+    }
+
+**Using es6 classes with directives requires a little work around.** there is a couple of ways to make this work. The solution described here seems to work well:
+http://blog.aaronholmes.net/writing-angularjs-directives-as-typescript-classes/#comment-2111298002
+
+
+    export class MyDirective {
+        public link:(scope:any , element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => void;
+        public template = '<div> this is a value in the directive {{name}}</div>';
+
+        // create isolate scope if needed
+        //public scope = {};
+
+        constructor(/*list of dependencies*/) {
+            MyDirective.prototype.link = (scope:any, element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => {
+                scope.name = "someName ";
+
+                // if we don't create an isolated scope we can reference our parent controller
+                var mainCtrl = scope.mainCtrl;
+                scope.name = mainCtrl.getName();
+
+                /*handle all your linking requirements here*/
+                element.on('tap click', function () {
+                    console.log(" MyDirective.ts > YES YES  = ");
+                })
+
+         };
+        }
+        
+        public static Factory() {
+            var directive = (/*list of dependencies*/) => {
+                return new MyDirective(/*list of dependencies*/);
+            };
+
+            //directive['$inject'] = ['/*list of dependencies*/'];
+
+            return directive;
+        }
+    }
+    
+When registring the directive in your angular module
+
+    
+    //import the class
+    import {MyDirective} from './MyDirective'
+    
+    export default angular.module('app.home',[])
+    // notice it's the static factory function which is called to register the directive
+    .directive('myDirective', MyDirective.Factory());
+
+
+If you dont want to use ES6 classes, everything works as normal.
+
+TODO - add standard directive function
+
+
+**directives using your own interfaces**
+
+... TODO
