@@ -53,7 +53,7 @@ node_modules/*
 # But don't ignore this folder
 !node_modules/party-people/
 
-dist/
+dist/*
 
 
 
