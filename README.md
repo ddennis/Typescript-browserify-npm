@@ -1,6 +1,9 @@
 ## Typescript External Modules with browserify in the browser
-How to use npm modules in the browser with typings and gulp
+How to use npm modules in the browser with typings and gulp - a boiler project.
 
+------------------------------------------
+##### Looking for Angular version [Click here](https://github.com/ddennis/Typescript-external-modules-Browserify-angular1-npm-commonjs)
+------------------------------------------------------------------------------------
 
 ## Install
 To be able to use this project nodejs must be installed
