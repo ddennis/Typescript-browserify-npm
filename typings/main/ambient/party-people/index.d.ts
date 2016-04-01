@@ -1,7 +1,5 @@
 
 
-
-
 declare module 'party-people' {
 
     export class aretha{
@@ -14,22 +12,7 @@ declare module 'party-people' {
         sing():void;
     }
 
-    function allSingers():void   
+
+    function allSingers():Array<any>
 
 }
-
-
-
-
-/*
-
-export interface ArethaFranklin{
-    canSing:boolean
-}*/
-
-/*
-
-declare module 'somePerson' {
-    var arethaFranklin: ArethaFranklin;
-    export default arethaFranklin;
-}*/

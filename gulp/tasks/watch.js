@@ -3,16 +3,12 @@
  */
 
 
-var gulp        = require("gulp");
-var browserSync = require('browser-sync').create('app');
-
+var gulp  = require("gulp");
+var browserSync  = require('browser-sync').get('app');
 
 //******************************************************************************
-gulp.task("dev", ['markup', 'browserifyTypescript'], function () {
-
-	  browserSync.init({
-			server: "./dist/"
-	  });
+	  //gulp.task("watch", [ 'markup', 'browserifyTypescript'], function () {
+gulp.task("watch", function () {
 
 	 // gulp.watch([ "source/**/**.ts" ], ["default"]);
 	  gulp.watch("dist/app.js").on('change', browserSync.reload);

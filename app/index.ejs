@@ -3,14 +3,36 @@
 <html lang="en">
 
 <head>
-			<meta charset="UTF-8">
-			<title>Title</title>
-			<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 </head>
+<style type="text/css">
 
+	.container{
+		background-color: #e8e8e8;
+		width:100%;
+		height:100%;
+		margin-top: 20px;
+		padding-top: 5px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+	}
+
+	.item{
+		padding-bottom: 20px;
+
+	}
+
+</style>
 <body>
 
-<%- version %>
+<h1>Version <%- version %> </h1>
+The version number is coming from the package.json file and rendered with ejs in the build process
+
+<div class="container">
+
+</div>
 
 <script type="text/javascript" src="app.js"></script>
 

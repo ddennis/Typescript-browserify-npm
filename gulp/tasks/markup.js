@@ -5,7 +5,6 @@
 
 
 var gulp           = require('gulp');
-
 var browserSync  = require('browser-sync').get('app');
 var gulpif       = require('gulp-if');
 var ejs = require("gulp-ejs");
@@ -16,17 +15,6 @@ var fs = require('fs');
 var versionNumber = require('../../package.json').version;
 
 
-/*
-fs.readFile('./package.json','utf8', function (err, data) {
-	  var file = JSON.parse(data)
-	  versionNumber = file.version
-	  gulpif(browserSync.active, browserSync.reload({ stream: true, once: true }))
-})
-*/
-
-
-
-// Views task
 gulp.task('markup', function() {
 
 	  gulp.src('./app/index.ejs')
