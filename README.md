@@ -2,7 +2,7 @@
 How to use npm modules in the browser with typings and gulp - a boiler project.
 
 ------------------------------------------
-##### Looking for Angular version [Click here](https://github.com/ddennis/Typescript-external-modules-Browserify-angular1-npm-commonjs)
+##### Looking for Angular version - [i got you covered - click here](https://github.com/ddennis/Typescript-external-modules-Browserify-angular1-npm-commonjs)
 ------------------------------------------------------------------------------------
 
 ## Install

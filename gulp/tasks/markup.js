@@ -25,12 +25,5 @@ gulp.task('markup', function() {
 			.pipe(gulp.dest('./dist' ))
 			.pipe(gulpif(browserSync.active , browserSync.reload({ stream: true, once: true })));
 
-	  /**
-	   * Put the views into the templates module, which adds them to the templateCache
-	   */
-
-	  return gulp.src('./app/src/modules/**/*.html')
-			.pipe(gulp.dest('dist/modules/' ))
-			.pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
-
+	    
 });
