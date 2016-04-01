@@ -1,4 +1,6 @@
-# Typescript external modules using browserify, npm, typings and Gulp
+## Typescript External Modules with browserify in the browser
+How to use npm modules in the browser with typings and gulp
+
 
 ## Install
 To be able to use this project nodejs must be installed
@@ -6,79 +8,65 @@ To be able to use this project nodejs must be installed
     npm install
 
 
-To get up and running with this project, i have included the typings files needed.
-In my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
-the typings files is included in the repo.
+Start development with **gulp** and **browsersync**, which will should open your browser on http://localhost:3000/
 
-If you want to install a new npm module you need to install the typings module -g
-
-    // ii you don't have the typings moduled install
-    npm install typings -g
-
-
-
-
-This should install typings globaly and install the typings file for the project:
-
-    npm install typings -g && typings install
-
-
-To install a definition type:
-
-	typings install angular --ambient --save
-
-
-To start development **gulp** and browsersync should open open your browser on http://localhost:3000/ by running:
     gulp dev
 
 
-
 ## What is this
-A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser. **typings** is used for handling Typescript definition files.
+A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser,
+which enables you to use npm as a package manager and ES6 syntax.
+If you are not familiar with commonjs and npm, [CLICK HERE](https://egghead.io/lessons/nodejs-what-are-commonjs-modules).
 
-This is basically a standard browserify project, which enables you to use **commonjs/npm modules** in the browser, this means no globals, and the same code style as a node project, where you can require/import a file, function or a module
-Using Typescript externals modules you don't have to pass the typescript reference file around and the needless namespacing in the code dividing classes into modules.
+## Why
+Using Typescript externals modules you don't have to pass the typescript reference file around or need the needless namespacing in the code dividing classes into modules.
+Your typescript modules/classes can easily be moved from project to project and no globals.
+The codecompletion/intellisense is fantastic if you use an ide which supports typescript. [something like](https://egghead.io/lessons/misc-webstorm-managing-imports).
 
-This boilerplate project is based on angular 1, but the basic setup can be used with or without any npm module.
+## Whats the problem
+The problem is that the Typescript compiler is not always nice guy, it has some specific needs that we need to satisfy
 
 
 ## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
-if you just invite some of your friends or import a module it will get upset and complain.
+if you just invited some of your friends or import a module it will get upset and complain.
 
     import * as partyPeople from 'party-people'
-	or
-    import * as _ from 'underscore';
 
-
-What we need to do, is to tell Mr Typescript compiler about **party-people**.
-To do this we provide a .d.ts file which explains what the people or **module** brings to the party
-
-Something like this:
 
 ####The npm module we want to use
+This is a simplyfied version of our example module, it exports one function, but for us to use it we need to tell the compiler about it.
+
+
 	exports.aretha = function () {
-		  ....
+		 ....
 	}
 	exports.bruce = function () {
-		  ...
-	}
-	exports.allSingers = function () {
-		...
-	}
+    	 ....
+    }
+
+## How to use it
+What we need to do, is to tell Mr Typescript compiler about **party-people**.
+To do this we provide a .d.ts file which explains what the **party-people** or **npm module** brings to the party
+this is done by providing Mr. Typescript compiler a with a d.ts file also called a typings file, more details on that later.
+
 
 ####The typescript definition file or d.ts
+We start by declaring our module name `party-people` which is usually the name of the folder in our node_modules.
+The node_modules is by default from where it will try to resolve our module.
 
     declare module 'party-people' {
         export class aretha{
         }
 	}
 
-
 Mr. Typescript compiler will now be very happy about letting **party-people** and **aretha** into the party.
-But if you want Bruce Willis to sing, so will have to specify **bruce** in the definition file.
+But if you want Bruce Willis to sing, we also have to specify **bruce** in the definition file and any other
+functionalities we want to use.
 
-To make Mr. Typescript compiler an even better host, we can provide an description of what each person in the **partyPeople** module can do:
+#### The final definition file
+To make Mr. Typescript compiler an even better host, we provide an description of what each person in the **partyPeople** module can do,
+but adding return types for every method and attribute.
 
 	declare module 'party-people' {
 
@@ -96,7 +84,7 @@ To make Mr. Typescript compiler an even better host, we can provide an descripti
 
 	}
 
-
+#### Full npm module
 Here is the complete 'party-people' npm module, which is included in the node_modules folder, as an example.
 
 	exports.aretha = function () {
@@ -107,8 +95,6 @@ Here is the complete 'party-people' npm module, which is included in the node_mo
 				console.log(vm.name, " sings: R-E-S-P-E-C-T Find out what it means to me R-E-S-P-E-C-T Take care, TCB");
 		  }
 	}
-
-
 	exports.bruce = function () {
 		  var vm     = this
 		  vm.canSing = false
@@ -117,11 +103,28 @@ Here is the complete 'party-people' npm module, which is included in the node_mo
 				console.log(vm.name + " sings: Under the boardwalk, down by the sea");
 		  }
 	}
-
-
 	exports.allSingers = function () {
 		  return ["Bruce (Die Hard) willis", "Aretha Fraklin"]
 	}
 
+
+## Typings
+
+To get up and running with this project, i have included the typings files needed.
+In my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
+the typings files is included in the repo.
+
+
+In this project all the d.ts files is passed to the typescript compiler in our build task
+
+If you want to install a new npm module you need to install the typings module -g
+
+    // if you don't have the typings moduled installed
+    npm install typings -g
+
+
+To install a definition type:
+
+	typings install angular --ambient --save
 
 
