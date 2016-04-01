@@ -6,12 +6,12 @@ How to use npm modules in the browser with typings and gulp - a boiler project.
 ------------------------------------------------------------------------------------
 
 ## Install
-To be able to use this project nodejs must be installed
+To be able to use this project nodejs must be installed, download or clone the project and:
 
     npm install
 
 
-Start development with **gulp** and **browsersync**, which will should open your browser on http://localhost:3000/
+Start development server with **browsersync**, which will should open your browser and navigate to http://localhost:3000/
 
     gulp dev
 
@@ -22,24 +22,27 @@ which enables you to use npm as a package manager and ES6 syntax.
 If you are not familiar with commonjs and npm, [click here](https://egghead.io/lessons/nodejs-what-are-commonjs-modules) for an introduction.
 
 ## Why
-Using Typescript externals modules you don't have to pass the typescript reference file around or need the needless namespacing in the code dividing classes into modules.
+Using Typescript externals modules you don't have to pass the typescript reference file around or the needless namespacing in the code dividing classes into modules.
 Your typescript modules/classes can easily be moved from project to project and no globals.
 The codecompletion/intellisense is fantastic if you use an ide which supports typescript. [an example from webstorm](https://egghead.io/lessons/misc-webstorm-managing-imports).
+sublime, atom and VScode is also supported.
+
 
 ## Whats the problem
-The problem is that the Typescript compiler is not always nice guy, it has some specific needs that we need to satisfy
+The problem is that Mr. Typescript compiler is not always a nice guy, he has some specific needs or he will kick you from the party
 
-
-## WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
+#### WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
 if you just invited some of your friends or import a module it will get upset and complain.
 
+
+    //The main class for this project is located \app\src\app.ts
     import * as partyPeople from 'party-people'
     // throws Error TS2307: Cannot find module 'party-people'.
 
 
 ####The npm module we want to use
-This is a simplyfied version of our example module, it exports a couple of functions, but for us to use it we need to tell the compiler about it.
+This is a simplyfied version of our example npm module, it exports a couple of functions, but for us to use it we need to tell the compiler about it.
 
 
 	exports.aretha = function () {
@@ -51,13 +54,15 @@ This is a simplyfied version of our example module, it exports a couple of funct
 
 ## How to use it
 What we need to do, is to tell Mr Typescript compiler about **party-people**.
-To do this we provide a .d.ts file which explains what the **party-people** or **npm module** brings to the party
-this is done by providing Mr. Typescript compiler a with a d.ts file also called a typings file, more details on that later.
+To do this we provide a .d.ts file which explains what the **party-people** or **npm module** brings to the party.
+The d.ts file is located in `typings\main\ambient\party-people\index.d.ts` we pass this file to the typescript compiler,
+more details on that in the Typings section.
 
+By providing Mr. Typescript compiler a with a d.ts file also called a typings file, he will very happy to see the **party-people** module
 
 ####The typescript definition file or d.ts
 We start by declaring our module name `party-people` which is usually the name of the folder in our node_modules.
-The node_modules is by default from where it will try to resolve our module.
+The node_modules is by default from where external non typescript modules will be resolved from.
 
     declare module 'party-people' {
         export class aretha{
@@ -65,12 +70,12 @@ The node_modules is by default from where it will try to resolve our module.
 	}
 
 Mr. Typescript compiler will now be very happy about letting **party-people** and **aretha** into the party.
-But if you want Bruce Willis to sing, we also have to specify **bruce** in the definition file and any other
-functionalities we want to use.
+But if we Bruce Willis to sing, we also have to specify **bruce** and the sing function in the definition file and any other
+functionality we want to use.
 
 #### The final definition file
-To make Mr. Typescript compiler an even better host, we provide an description of what each person in the **partyPeople** module can do,
-but adding return types for every method and attribute.
+To make Mr. Typescript compiler an even better host, we can provide an description of what each person in the **partyPeople** module can do,
+this is done by adding return types for every method and attribute. You can try to add or remove stuff from the d.ts file to see the compiler complain.
 
 	declare module 'party-people' {
 
@@ -118,7 +123,8 @@ luckly there is a big community providing definitions files for alot of the most
 [See the DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped).
 
 #### Install new typings
-The typings module provides an easy way to install them:
+The typings module provides an easy way to install definition files provide by the community:
+[More details about the typings manager here](https://www.npmjs.com/package/typings)
 
     // if you don't have the typings module installed
     npm install typings -g
@@ -127,8 +133,6 @@ To add a definition file to the project:
 
 	//when typings is installed
 	typings install angular --ambient --save
-
-[More details about the typings manager here](https://www.npmjs.com/package/typings)
 
 
 To get up and running with this project, i have included the typings files needed, some might prefer to leave them out of the repo
@@ -163,7 +167,7 @@ We provide an configuration object, where we specify the module type `"module": 
     );
 
 
-
+//TODO more on compiler
 
 
 
