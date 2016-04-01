@@ -19,7 +19,6 @@ var customOpts = {
 
 var opts = assign({}, watchify.args, customOpts);
 
-
 var b = watchify(browserify(opts));
 
 	// Add the typings file so typescript knows the npm modules we are using
@@ -43,20 +42,32 @@ var b = watchify(browserify(opts));
 	);
 
 
-/**
+/******************************************************************************************
  * Run Gulp task
- */
+ ******************************************************************************************/
 
-gulp.task('browserifyTypescript', bundle); // so you can run `gulp js` to build the file
+// so you can run `gulp browserifyTypescript` to build the file
+gulp.task('browserifyTypescript', bundle);
 
-b.on('update', bundle); // on any dep update, runs the bundler
-b.on('log', gutil.log); // output build logs to terminal
+// on any dep update, runs the bundler
+b.on('update', bundle);
+
+
+// output build logs to terminal
+b.on('log', function (msg) {
+	  gutil.log(gutil.colors.blue(msg));
+	  gutil.beep();
+});
+
 
 function bundle() {
-
 	return b.bundle()
-		// log errors if they happen
-		.on('error', gutil.log.bind(gutil, 'Browserify Error'))
+		.on('error', function (err) {
+			  gutil.log(
+					gutil.colors.red("Browserify compile error:"),
+					err.message
+			  );
+		})
 		.pipe(source('app.js'))
 		// optional, remove if you don't need to buffer file contents
 		.pipe(buffer())
