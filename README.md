@@ -29,7 +29,8 @@ sublime, atom and VScode is also supported.
 
 
 ## Whats the problem
-The problem is that Mr. Typescript compiler is not always a nice guy, he has some specific needs or he will kick you from the party
+The problem is that Mr. Typescript compiler is not always a nice guy, he has some specific needs or he will kick you from the party if
+he does not get all the information he needs
 
 #### WHAT YOU NEED, Do you know I got it? - all im askin' is for a little definition file ♫ ♬ ♫
 In order to make the Typescript compiler happy and get it to party with you, you need to tell it who and what you have invited to the party.
