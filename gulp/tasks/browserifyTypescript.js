@@ -56,7 +56,7 @@ b.on('update', bundle);
 // output build logs to terminal
 b.on('log', function (msg) {
 	  gutil.log(gutil.colors.blue(msg));
-	  gutil.beep();
+
 });
 
 
@@ -67,6 +67,7 @@ function bundle() {
 					gutil.colors.red("Browserify compile error:"),
 					err.message
 			  );
+			  gutil.beep();
 		})
 		.pipe(source('app.js'))
 		// optional, remove if you don't need to buffer file contents

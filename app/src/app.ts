@@ -38,10 +38,10 @@ import {SingerUtil} from './utils/SingerUtil'
 class Main {
 
     public body:JQuery = $("body");
-    public container:JQuery = $('.container');
+    public container:JQuery = $('.singerContainer');
 
+    // by default the varible is private if we don't provide the public keyword
     singerUtil:SingerUtil;
-
 
     constructor() {
 

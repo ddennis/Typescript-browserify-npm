@@ -13,6 +13,6 @@ declare module 'party-people' {
     }
 
 
-    function allSingers():Array<any>
+    function allSingers():Array<string>
 
 }

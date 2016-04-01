@@ -16,12 +16,12 @@ Start development with **gulp** and **browsersync**, which will should open your
 ## What is this
 A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser,
 which enables you to use npm as a package manager and ES6 syntax.
-If you are not familiar with commonjs and npm, [CLICK HERE](https://egghead.io/lessons/nodejs-what-are-commonjs-modules).
+If you are not familiar with commonjs and npm, [click here](https://egghead.io/lessons/nodejs-what-are-commonjs-modules) for an introduction.
 
 ## Why
 Using Typescript externals modules you don't have to pass the typescript reference file around or need the needless namespacing in the code dividing classes into modules.
 Your typescript modules/classes can easily be moved from project to project and no globals.
-The codecompletion/intellisense is fantastic if you use an ide which supports typescript. [something like](https://egghead.io/lessons/misc-webstorm-managing-imports).
+The codecompletion/intellisense is fantastic if you use an ide which supports typescript. [an example from webstorm](https://egghead.io/lessons/misc-webstorm-managing-imports).
 
 ## Whats the problem
 The problem is that the Typescript compiler is not always nice guy, it has some specific needs that we need to satisfy
@@ -32,10 +32,11 @@ In order to make the Typescript compiler happy and get it to party with you, you
 if you just invited some of your friends or import a module it will get upset and complain.
 
     import * as partyPeople from 'party-people'
+    // throws Error TS2307: Cannot find module 'party-people'.
 
 
 ####The npm module we want to use
-This is a simplyfied version of our example module, it exports one function, but for us to use it we need to tell the compiler about it.
+This is a simplyfied version of our example module, it exports a couple of functions, but for us to use it we need to tell the compiler about it.
 
 
 	exports.aretha = function () {
@@ -80,7 +81,7 @@ but adding return types for every method and attribute.
 	       sing():void;
 	   }
 
-	   function allSingers():void
+	   function allSingers():Array<string>
 
 	}
 
@@ -109,22 +110,57 @@ Here is the complete 'party-people' npm module, which is included in the node_mo
 
 
 ## Typings
+What should be clear now is that the ***typings files are very important***, if you want to work with npm modules.
+luckly there is a big community providing definitions files for alot of the most used npm modules.
+[See the DefinitelyTyped repo](https://github.com/DefinitelyTyped/DefinitelyTyped).
 
-To get up and running with this project, i have included the typings files needed.
-In my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
-the typings files is included in the repo.
+#### Install new typings
+The typings module provides an easy way to install them:
 
-
-In this project all the d.ts files is passed to the typescript compiler in our build task
-
-If you want to install a new npm module you need to install the typings module -g
-
-    // if you don't have the typings moduled installed
+    // if you don't have the typings module installed
     npm install typings -g
 
+To add a definition file to the project:
 
-To install a definition type:
-
+	//when typings is installed
 	typings install angular --ambient --save
+
+[More details about the typings manager here](https://www.npmjs.com/package/typings)
+
+
+To get up and running with this project, i have included the typings files needed, some might prefer to leave them out of the repo
+but in my experince the typings files is not always complete, so sometimes you may want to added properties, therefore
+the typings files is included.
+
+
+###processing the definition files
+In this project all the d.ts files is passed to the typescript compiler in our build task.
+We provide an configuration object, where we specify the module type `"module": "commonjs"` and add in the `typings/main.d.ts` which reference all our definitions files
+
+    in the gulp/task/browserifyTypescript.js
+
+    // Add the typings file so typescript knows the npm modules we are using
+    b.add('typings/main.d.ts');
+
+    // build the typescript files, providing the config for doing so
+    b.plugin(tsify, {
+            "target": "es5",
+            "module": "commonjs",
+            "isolatedModules": false,
+            "experimentalDecorators": true,
+            "emitDecoratorMetadata": true,
+            "declaration": true,
+            "noImplicitAny": true,
+            "removeComments": true,
+            "noLib": false,
+            "preserveConstEnums": true,
+            "suppressImplicitAnyIndexErrors": true,
+            "moduleResolution": "node"
+        }
+    );
+
+
+
+
 
 
