@@ -3,7 +3,7 @@ How to use npm modules in the browser with typings and gulp - a boiler project.
 
 ------------------------------------------
 ##### Looking for Angular version - [i got you covered - click here](https://github.com/ddennis/Typescript-external-modules-Browserify-angular1-npm-commonjs)
-------------------------------------------------------------------------------------
+------------------------------------------
 
 ## Install
 To be able to use this project nodejs must be installed, download or clone the project and:
@@ -19,14 +19,15 @@ Start development server with **browsersync**, which will should open your brows
 ## What is this
 A project using **Typescript external modules**, compiling to **commonjs** modules and using **browserify** to load the script bundle in the browser,
 which enables you to use npm as a package manager and ES6 syntax.
-If you are not familiar with commonjs and npm, [click here](https://egghead.io/lessons/nodejs-what-are-commonjs-modules) for an introduction.
+
+- [What is commonjs and npm, click here](https://egghead.io/lessons/nodejs-what-are-commonjs-modules)
+- [what is ES6 click here](https://www.youtube.com/watch?v=CozSF5abcTA)
 
 ## Why
 Using Typescript externals modules you don't have to pass the typescript reference file around or the needless namespacing in the code dividing classes into modules.
 Your typescript modules/classes can easily be moved from project to project and no globals.
 The codecompletion/intellisense is fantastic if you use an ide which supports typescript. [an example from webstorm](https://egghead.io/lessons/misc-webstorm-managing-imports).
 sublime, atom and VScode is also supported.
-
 
 ## Whats the problem
 The problem is that Mr. Typescript compiler is not always a nice guy, he has some specific needs or he will kick you from the party if
